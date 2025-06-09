@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox fx:controller="org.example.finallyprojecttekwill.HelloController" prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <AnchorPane prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+            <children>
+                <Label fx:id="intrebareLabel" alignment="CENTER" layoutX="199.0" layoutY="220.0" text="Care este capitala Frantei?" textAlignment="CENTER" textFill="#0b0b0b">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Label>
+
+                <Button fx:id="btn5050" layoutX="107.0" layoutY="48.0" text="50/50" onAction="#initialize"/>
+                <Button fx:id="btnPublic" layoutX="251.0" layoutY="48.0" text="Intreaba Publicul" onAction="#initialize"/>
+                <Button fx:id="btnPrieten" layoutX="453.0" layoutY="48.0" text="Suna un prieten" onAction="#initialize"/>
+
+                <Button fx:id="btnA" layoutX="169.0" layoutY="268.0" text="A. Berlin" onAction="#initialize"/>
+                <Button fx:id="btnB" layoutX="371.0" layoutY="268.0" text="B. Madrid" onAction="#initialize"/>
+                <Button fx:id="btnC" layoutX="203.0" layoutY="329.0" text="C. Paris" onAction="#initialize"/>
+                <Button fx:id="btnD" layoutX="340.0" layoutY="329.0" text="D. Roma" onAction="#initialize"/>
+
+                <ImageView fx:id="imagine" fitHeight="113.0" fitWidth="151.0" layoutX="247.0" layoutY="98.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@images/imagine1.jpg" />
+                    </image>
+                </ImageView>
+
+                <Label fx:id="nivelLabel" alignment="CENTER" layoutX="29.0" layoutY="141.0" text="Nivel 1" textAlignment="CENTER" textFill="#0b0b0b">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Label>
+
+                <Label fx:id="scorLabel" alignment="CENTER" layoutX="7.0" layoutY="172.0" prefHeight="27.0" prefWidth="100.0" text="Scor: 100" textAlignment="CENTER" textFill="#0b0b0b">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Label>
+            </children>
+        </AnchorPane>
+    </children>
+</VBox>
+
+
