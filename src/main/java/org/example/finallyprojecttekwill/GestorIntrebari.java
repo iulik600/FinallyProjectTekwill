@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 public class GestorIntrebari {
+    //Metoda statica ce returneaza o lista de obiecte Intrebare
     public static List<Intrebare> incarcaIntrebari() {
         List<Intrebare> intrebari = new ArrayList<>();
         Map<Varianta, String> optiuni1 = new HashMap<>();
@@ -15,7 +16,7 @@ public class GestorIntrebari {
         optiuni1.put(Varianta.D, "Madrid");
 
         intrebari.add(new Intrebare("Care este capitala Frantei?",
-                optiuni1, Varianta.A));
+                optiuni1, Varianta.A)); // enuntul intrebarii / variantele de raspuns / raspunsul corect
 
         // Intrebarea 2
         Map<Varianta, String> optiuni2 = new HashMap<>();
@@ -37,6 +38,7 @@ public class GestorIntrebari {
         intrebari.add(new Intrebare("Care este cel mai greu element chimic natural?",
                 optiuni3,Varianta.C));
 
+        // Returneaza lista completa cu intrebbarile incarcate
         return intrebari;
     }
 }

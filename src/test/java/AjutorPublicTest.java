@@ -23,24 +23,24 @@ public class AjutorPublicTest {
 
         AjutorPublic ajutor = new AjutorPublic();
 
-        // 2. Generăm procentajele
+        // 2. Generam procentajele
         Map<Varianta, Integer> procentaje = ajutor.genereazaProcentaje(intrebare);
 
-        // 3. Verificăm că toate cele 4 variante sunt prezente
+        // 3. Verificam ca toate cele 4 variante sunt prezente
         assertEquals(4, procentaje.size());
         for (Varianta v : Varianta.values()) {
             assertTrue(procentaje.containsKey(v), "Lipsește varianta: " + v);
         }
 
-        // 4. Verificăm că suma e 100%
+        // 4. Verificăm ca suma e 100%
         int suma = procentaje.values().stream().mapToInt(Integer::intValue).sum();
         assertEquals(100, suma, "Suma procentajelor trebuie să fie 100%");
 
-        // 5. Verificăm intervalul variantei corecte
+        // 5. Verificam intervalul variantei corecte
         int procentCorect = procentaje.get(intrebare.getVariantaCorecta());
         assertTrue(procentCorect >= 50 && procentCorect <= 80, "Procentul pentru varianta corectă e în afara intervalului");
 
-        // 6. Verificăm că toate valorile sunt între 0 și 100
+        // 6. Verificam că toate valorile sunt intre 0 și 100
         for (int procent : procentaje.values()) {
             assertTrue(procent >= 0 && procent <= 100, "Procent invalid: " + procent);
         }

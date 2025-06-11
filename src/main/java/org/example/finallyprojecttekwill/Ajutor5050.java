@@ -25,14 +25,16 @@ public class Ajutor5050 implements AjutorJoc {
                 gresite.add(v);
             }
         }
-
+        // Amestecă aleator opțiunile greșite și alege una.
         Collections.shuffle(gresite);
         Varianta unaGresita = gresite.get(0);
 
+        // creaza o lista cu variantele ramase
         List<Varianta> ramase = new ArrayList<>();
         ramase.add(corecta);
         ramase.add(unaGresita);
 
+        //returneaza variantele ramase
         return ramase;
     }
 }

@@ -1,52 +1,101 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+
+
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Priority?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:controller="org.example.finallyprojecttekwill.HelloController" prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
-    <children>
-        <AnchorPane prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
-            <children>
-                <Label fx:id="intrebareLabel" alignment="CENTER" layoutX="199.0" layoutY="220.0" text="Care este capitala Frantei?" textAlignment="CENTER" textFill="#0b0b0b">
-                    <font>
-                        <Font size="18.0" />
-                    </font>
-                </Label>
-
-                <Button fx:id="btn5050" layoutX="107.0" layoutY="48.0" text="50/50" onAction="#initialize"/>
-                <Button fx:id="btnPublic" layoutX="251.0" layoutY="48.0" text="Intreaba Publicul" onAction="#initialize"/>
-                <Button fx:id="btnPrieten" layoutX="453.0" layoutY="48.0" text="Suna un prieten" onAction="#initialize"/>
-
-                <Button fx:id="btnA" layoutX="169.0" layoutY="268.0" text="A. Berlin" onAction="#initialize"/>
-                <Button fx:id="btnB" layoutX="371.0" layoutY="268.0" text="B. Madrid" onAction="#initialize"/>
-                <Button fx:id="btnC" layoutX="203.0" layoutY="329.0" text="C. Paris" onAction="#initialize"/>
-                <Button fx:id="btnD" layoutX="340.0" layoutY="329.0" text="D. Roma" onAction="#initialize"/>
-
-                <ImageView fx:id="imagine" fitHeight="113.0" fitWidth="151.0" layoutX="247.0" layoutY="98.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@images/imagine1.jpg" />
-                    </image>
-                </ImageView>
-
-                <Label fx:id="nivelLabel" alignment="CENTER" layoutX="29.0" layoutY="141.0" text="Nivel 1" textAlignment="CENTER" textFill="#0b0b0b">
-                    <font>
-                        <Font size="18.0" />
-                    </font>
-                </Label>
-
-                <Label fx:id="scorLabel" alignment="CENTER" layoutX="7.0" layoutY="172.0" prefHeight="27.0" prefWidth="100.0" text="Scor: 100" textAlignment="CENTER" textFill="#0b0b0b">
-                    <font>
-                        <Font size="18.0" />
-                    </font>
-                </Label>
-            </children>
-        </AnchorPane>
-    </children>
-</VBox>
 
 
+<?import javafx.scene.layout.Region?>
+<GridPane fx:controller="org.example.finallyprojecttekwill.HelloController" prefHeight="400.0" prefWidth="640.0"
+          xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+    <columnConstraints>
+        <ColumnConstraints hgrow="ALWAYS"/>
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="400.0" prefWidth="500.0"/>
+        <ColumnConstraints hgrow="ALWAYS"/>
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints vgrow="ALWAYS"/>
+        <RowConstraints vgrow="NEVER"/>
+        <RowConstraints vgrow="SOMETIMES"/>
+        <RowConstraints vgrow="SOMETIMES"/>
+        <RowConstraints vgrow="ALWAYS"/>
+    </rowConstraints>
+    <HBox alignment="TOP_CENTER" spacing="50.0" GridPane.columnIndex="1" GridPane.rowIndex="1"
+          GridPane.halignment="CENTER" GridPane.valignment="TOP">
+
+        <VBox alignment="TOP_LEFT" spacing="10.0" HBox.hgrow="ALWAYS">
+
+            <padding>
+                <Insets top="10.0" left="0.0" right="0.0" bottom="0.0"/>
+            </padding>
+            <Label fx:id="nivelLabel" text="Nivel 2" textFill="#0b0b0b">
+                <font>
+                    <Font size="18.0"/>
+                </font>
+            </Label>
+            <Label fx:id="scorLabel" text="Scor: 10" textFill="#0b0b0b">
+
+                <font>
+                    <Font size="18.0"/>
+                </font>
+            </Label>
+        </VBox>
+        <Region HBox.hgrow="ALWAYS"/>
+
+        <HBox alignment="CENTER" spacing="10.0"  HBox.hgrow="ALWAYS">
+
+            <Button fx:id="btn5050" onAction="#initialize" text="50/50"/>
+            <Button fx:id="btnPublic" onAction="#initialize" text="Intreaba Publicul"/>
+            <Button fx:id="btnPrieten" onAction="#initialize" text="Suna un prieten"/>
+        </HBox>
+    </HBox>
+    <VBox alignment="CENTER" spacing="20.0" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.halignment="CENTER"
+          GridPane.valignment="CENTER">
+        <children>
+            <ImageView fx:id="imagine" fitHeight="113.0" fitWidth="151.0" pickOnBounds="true" preserveRatio="true">
+                <image>
+                    <Image url="@images/imagine1.jpg"/>
+                </image>
+            </ImageView>
+            <Label fx:id="intrebareLabel" alignment="CENTER" text="Ce planeta este cunoscuta ca Planeta Rosie?"
+                   textAlignment="CENTER" textFill="#0b0b0b" wrapText="true">
+                <font>
+                    <Font size="18.0"/>
+                </font>
+            </Label>
+        </children>
+    </VBox>
+
+    <GridPane alignment="CENTER" hgap="20.0" vgap="20.0" GridPane.columnIndex="1" GridPane.rowIndex="3"
+              GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+        <columnConstraints>
+            <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+        </rowConstraints>
+        <children>
+            <Button fx:id="btnA" onAction="#initialize" prefWidth="150.0" text="A. Venus" GridPane.halignment="RIGHT"/>
+            <Button fx:id="btnB" onAction="#initialize" prefWidth="150.0" text="B. Marte" GridPane.columnIndex="1"
+                    GridPane.halignment="LEFT"/>
+            <Button fx:id="btnC" onAction="#initialize" prefWidth="150.0" text="C. Jupiter" GridPane.rowIndex="1"
+                    GridPane.halignment="RIGHT"/>
+            <Button fx:id="btnD" onAction="#initialize" prefWidth="150.0" text="D. Saturn" GridPane.columnIndex="1"
+                    GridPane.rowIndex="1" GridPane.halignment="LEFT"/>
+        </children>
+    </GridPane>
+</GridPane>
