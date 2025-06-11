@@ -45,6 +45,7 @@ public class JocMilionar {
         System.out.println();
     }
 
+    // Metodă care activează un ajutor, dacă este disponibil
     public void folosesteAjutor(String cheie, Intrebare intrebare) {
         AjutorJoc ajutor = ajutoareDisponibile.get(cheie);
         if (ajutor != null) {
@@ -58,6 +59,7 @@ public class JocMilionar {
     public void pornesteJoc() {
         System.out.println("Bun venit la 'Cine vrea sa fie milionar?' ");
 
+        // Parcurgem toate întrebările din listă
         for (int i = 0; i < intrebari.size(); i++) {
             Intrebare intrebare = intrebari.get(i);
             System.out.println("Intrebarea " + (i + 1) + ": " + intrebare.getEnunt());
@@ -72,7 +74,7 @@ public class JocMilionar {
             System.out.println("Raspunsul tau (A/B/C/D sau ajutor): ");
             String raspuns = scanner.nextLine();
 
-            // Ajutor
+            // Dacă utilizatorul a scris un ajutor
             if (ajutoareDisponibile.containsKey(raspuns)) {
                 folosesteAjutor(raspuns, intrebare);
                 i--; // Ramane la aceaiasi intrebare

@@ -46,6 +46,7 @@ public class HelloController {
         joc = new JocMilionar(intrebari);
         indexCurent = 0;
 
+        // Asociaza fiecare variantă (A, B, C, D) cu un buton corespunzător
         butoaneRaspuns = Map.of(
                 Varianta.A, btnA,
                 Varianta.B, btnB,
@@ -53,6 +54,7 @@ public class HelloController {
                 Varianta.D, btnD
         );
 
+        // Setează acțiunea la click pentru fiecare buton de răspuns
         for (Map.Entry<Varianta, Button> entry : butoaneRaspuns.entrySet()) {
             entry.getValue().setOnAction(e -> proceseazaRaspuns(entry.getKey()));
         }
@@ -72,11 +74,11 @@ public class HelloController {
         }
 
         Intrebare intrebare = joc.getIntrebari().get(indexCurent);
-        intrebareLabel.setText(intrebare.getEnunt());
-        nivelLabel.setText("Nivel " + (indexCurent + 1));
-        scorLabel.setText("Scor: " + joc.getScor());
+        intrebareLabel.setText(intrebare.getEnunt()); // afiseaza intrebarea
+        nivelLabel.setText("Nivel " + (indexCurent + 1)); // afiseaza nivelul
+        scorLabel.setText("Scor: " + joc.getScor()); // afiseaza scorul
 
-        ajutorFolositLaIntrebareaCurenta = false; // Resetăm
+        ajutorFolositLaIntrebareaCurenta = false; // Resetăm ajutorul
         activeazaAjutoare(); // Activăm toate ajutoarele
 
         // Reafisează toate butoanele și le reactivează
@@ -95,6 +97,7 @@ public class HelloController {
 
 
     private void finalizeazaJocul() {
+        // Afișează un dialog de confirmare la finalul jocului
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Sfârșitul jocului");
         alert.setHeaderText("Ai răspuns greșit!");
@@ -106,6 +109,8 @@ public class HelloController {
         alert.getButtonTypes().setAll(da, nu);
 
         Optional<ButtonType> rezultat = alert.showAndWait();
+
+        // Dacă utilizatorul vrea să joace din nou, se resetează jocul
         if (rezultat.isPresent() && rezultat.get() == da) {
             // Resetare joc
             List<Intrebare> intrebariNoi = GestorIntrebari.incarcaIntrebari();
@@ -119,17 +124,19 @@ public class HelloController {
     }
 
     private void proceseazaRaspuns(Varianta variantaAleasa) {
+        // Verifică dacă varianta aleasă este corectă
         Intrebare intrebare = joc.getIntrebari().get(indexCurent);
         if (variantaAleasa.equals(intrebare.getVariantaCorecta())) {
             joc.adaugaScor(10);
-            indexCurent++;
+            indexCurent++; // urmatoarea intrebare trecem
             afiseazaIntrebareCurenta();
         } else {
-            finalizeazaJocul();
+            finalizeazaJocul(); // raspuns gresit - joc terminat
         }
     }
 
     private void folosesteAjutor(TipAjutor tipAjutor) {
+        // Nu poți folosi mai mult de un ajutor pe întrebare
         if (ajutorFolositLaIntrebareaCurenta) {
             arataAlert("Atenție", "Ai folosit deja un ajutor la această întrebare.");
             return;
@@ -138,6 +145,7 @@ public class HelloController {
         Intrebare intrebare = joc.getIntrebari().get(indexCurent);
 
         switch (tipAjutor) {
+            // Ajutor 50/50 → elimină 2 variante greșite
             case CINCI_SPREZECE -> {
                 Ajutor5050 ajutor = new Ajutor5050();
                 List<Varianta> varianteRamase = ajutor.oferaAjutorReturnand(intrebare);
@@ -148,7 +156,7 @@ public class HelloController {
                 }
                 btn5050.setDisable(true);
             }
-
+// sugestia publicului
             case PUBLIC -> {
                 AjutorPublic ajutor = new AjutorPublic();
                 Map<Varianta, Integer> voturi = ajutor.genereazaProcentaje(intrebare);
@@ -157,7 +165,7 @@ public class HelloController {
                 arataAlert("Ajutor Public", mesaj.toString());
                 btnPublic.setDisable(true);
             }
-
+// sugetia unui prieten
             case PRIETEN -> {
                 AjutorSunaPrieten ajutor = new AjutorSunaPrieten();
                 Varianta sugestie = ajutor.oferaAjutorReturnand(intrebare);
@@ -165,11 +173,12 @@ public class HelloController {
                 btnPrieten.setDisable(true);
             }
         }
-        ajutorFolositLaIntrebareaCurenta = true;
-        dezactiveazaAlteAjutoare(tipAjutor);
+        ajutorFolositLaIntrebareaCurenta = true; // marcam ca s-a folosit un ajutor
+        dezactiveazaAlteAjutoare(tipAjutor); //dezactivam celelalte ajutoare
     }
 
     private void arataAlert(String titlu, String mesaj) {
+        // afiseaza o fereastra de tip alert
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(titlu);
         alert.setHeaderText(null);
