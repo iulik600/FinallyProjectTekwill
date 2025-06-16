@@ -93,9 +93,11 @@ public class JocMilionar {
                     break;
                 }
             } catch (IllegalArgumentException e) {
+                // Dacă utilizatorul a scris un răspuns invalid (nu A/B/C/D)
                 System.out.println("Raspuns invalid. Incearca din nou.");
                 i--; // ramane la aceiasi intrebare
             } catch (Exception e) {
+                // Orice altă eroare neașteptată
                 System.out.println("A aparut o eroare: " + e.getMessage());
                 break;
             }
